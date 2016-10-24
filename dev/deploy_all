@@ -1,0 +1,9 @@
+res = $(test_and_make_stable)
+
+if [ "$res" == "" ]
+then
+    update_stables
+else
+    echo $res
+fi
+

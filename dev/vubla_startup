@@ -1,0 +1,9 @@
+cd /var/www/alex.vubla.com/htdocs/development/scripts/dev
+
+res=$(ps ax | grep 'cron' | grep 'php')
+if [ "$res" == "" ] 
+then
+    php startup.php
+else
+    echo 'Cron job is currently running, this script should not have been run! But not to worry, I did not do anything.'
+fi

@@ -1,0 +1,3 @@
+
+tail -f /var/www/rasmus.vubla.com/logs/error.log
+

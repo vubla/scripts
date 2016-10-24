@@ -1,0 +1,42 @@
+#!/bin/bash
+
+sudo mkdir /var/vubla/deploy_temp
+cd /var/vubla/deploy_temp
+sudo cp ../testname testname
+
+
+#Check out whatever is supposed to be tested.
+sudo hg clone /var/vubla/hg/development  
+cd  development 
+sudo hg pull  /var/vubla/hg/stable
+sudo hg update
+sudo hg merge
+ 
+
+
+syntesres=$(check_syntax)
+
+
+cd classes/tests
+sudo chmod +x *.sh
+sudo ./make_config.sh
+#Test EVERY test case
+./resetdb.sh >> /dev/null
+res=$(sudo ./verify_all_test.sh)$syntesres
+cd ../..
+
+sudo rm -r /var/vubla/deploy_temp
+
+if [ "$res" == "" ]
+then
+    cd /var/vubla/hg/development
+    sudo hg update
+    sudo hg fetch
+    sudo hg push
+    
+else
+    echo "Failed to checkout and test:"
+    echo $res
+    echo ""
+fi
+

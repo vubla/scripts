@@ -1,0 +1,4 @@
+#!/bin/bash 
+
+tail -f /var/www/vubla.com/logs/error.log
+

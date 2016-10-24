@@ -1,0 +1,7 @@
+cd /var/vubla/hg/stable
+hg head
+hg parent
+hg serve -d
+ssh -p 35790 77.66.51.5 'bash -s' < /var/vubla/scripts/do_update_search
+sudo hg update
+

@@ -1,0 +1,36 @@
+#!/usr/bin/php
+< = scandir($dir);
+include '/var/vubla/crons/config.php';
+include CLASS_FOLDER.'/autoload.php';
+
+$maintainer = new DbDeployMaintainer();
+
+echo $maintainer->getSql();
+
+
+function ReadStdin($prompt, $valid_inputs, $default = '') { 
+    while(!isset($input) || (is_array($valid_inputs) && !in_array($input, $valid_inputs)) || ($valid_inputs == 'is_file' && !is_file($input))) { 
+        echo $prompt; 
+        $input = strtolower(trim(fgets(STDIN))); 
+        if(empty($input) && !empty($default)) { 
+            $input = $default; 
+        } 
+    } 
+    return $input; 
+} 
+
+$mainterner->deploy();
+
+$dir = '/var/vubla/deploy_db_hooks/';
+$files = scandir($dir);
+foreach($files as $key => $value){
+
+	if(preg_match('/\.sql$/', $value))
+	{
+ 		echo $value . "\n";
+	}
+
+
+}
+
+?>

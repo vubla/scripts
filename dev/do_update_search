@@ -1,0 +1,10 @@
+cd /var/vubla/hg
+hg heads
+hg parent
+hg pull
+hg update
+chmod -R 775 . 
+chown -R root:admin .
+
+#cd /var/vubla/scripts
+#./do_deploy_modules

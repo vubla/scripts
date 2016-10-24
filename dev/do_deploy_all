@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd /var/www/admin.vubla.com/htdocs
+
+svn up --username svnuser --password Trekant01 
+
+
+cd /var/vubla/classes
+
+svn up --username svnuser --password Trekant01 
