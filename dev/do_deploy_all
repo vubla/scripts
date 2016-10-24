@@ -2,9 +2,9 @@
 
 cd /var/www/admin.vubla.com/htdocs
 
-svn up --username svnuser --password Trekant01 
+svn up --username svnuser --password PASSWORD 
 
 
 cd /var/vubla/classes
 
-svn up --username svnuser --password Trekant01 
+svn up --username svnuser --password PASSWORD 
